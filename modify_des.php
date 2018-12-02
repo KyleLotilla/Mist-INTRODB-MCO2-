@@ -1,5 +1,5 @@
-
 <?php
+session_start();
 
 $host = '127.0.0.1';
 $db = 'mistdb';
@@ -19,11 +19,9 @@ try {
      throw new \PDOException($e->getMessage(), (int)$e->getCode());
 }
 
-$create_account = $pdo->prepare('INSERT INTO accounts (username, password, email_address, account_type) 
-								 VALUES (?, ?, ?, ?)');
+$modifyQuery = $pdo->prepare("UPDATE accounts SET description = ? WHERE accountID = ?");
+$modifyQuery->execute([$_POST['description'], $_SESSION['accountID']]);
 
-$create_account->execute([$_POST["username"], $_POST["password"], $_POST["email"], $_POST["account_type"]]);
-
-echo "<a href=\"login.html\"> Account Created. Continue to Login </a>";
+echo "<a href = \"profile.php\">Description Saved. Go back to Profile</a>";
 
 ?>

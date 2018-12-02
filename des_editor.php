@@ -1,6 +1,14 @@
-
 <?php
+session_start();
+?>
+<html>
+<head>
+</head>
+<body>
 
+<form action = "modify_des.php" method = "post">
+Description: 
+<?php
 $host = '127.0.0.1';
 $db = 'mistdb';
 $user = 'root';
@@ -19,11 +27,13 @@ try {
      throw new \PDOException($e->getMessage(), (int)$e->getCode());
 }
 
-$create_account = $pdo->prepare('INSERT INTO accounts (username, password, email_address, account_type) 
-								 VALUES (?, ?, ?, ?)');
+$desQuery = $pdo->prepare("SELECT description FROM accounts WHERE accountID = ?");
+$desQuery->execute([$_SESSION['accountID']]);
+$des = $desQuery->fetch();
 
-$create_account->execute([$_POST["username"], $_POST["password"], $_POST["email"], $_POST["account_type"]]);
-
-echo "<a href=\"login.html\"> Account Created. Continue to Login </a>";
-
+echo "<input type = \"text\" size = \"100\" name = \"description\" value = \"". $des['description'] . "\"> <br>";
 ?>
+<input type = "submit" value = "Save">
+</form>
+</body>
+</html>
