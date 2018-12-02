@@ -2,16 +2,16 @@
 <head>
 </head>
 <body>
-   <form>
-      Username:<br>
-      <input type="text" name="username"> <br>
-      Password:<br>
-      <input type="text" name="password"> <br>
-      Email Address:<br>
-      <input type="text" name="email"> <br>
-      Account Type:<br>
-      <input type="radio" name="account" value="player"> Player
-      <input type="radio" name="account" value="developer"> Developer
-   </form>
+
+<form action = "account_created.php" method = "post">
+Username: <input type = "text" name = "username"> <br>
+Password: <input type = "text" name = "password"> <br>
+Email Address: <input type = "text" name = "email"> <br>
+Player Type: <br>
+<input type = "radio" name = "account_type" value  = "player"> Player <br>
+<input type = "radio" name = "account_type" value  = "developer"> Developer <br>
+<input type = "submit" value = "Submit">
+</form>
+
 </body>
 </html>
