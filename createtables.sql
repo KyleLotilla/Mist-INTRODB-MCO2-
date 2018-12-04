@@ -15,26 +15,27 @@ CREATE TABLE games (
 	gameID int(8) AUTO_INCREMENT,
 	title varchar(32) NOT NULL UNIQUE,
 	devID int(8) NOT NULL,
-	price decimal(10,2),
+	price decimal(10,2) NOT NULL,
 	date_published date NOT NULL,
 	likes int(10) DEFAULT 0,
 	dislikes int(10) DEFAULT 0,
 	description varchar(255),
+	image varchar(255) NOT NULL,
 	PRIMARY KEY (gameID),
 	FOREIGN KEY (devID) REFERENCES accounts(accountID)
 	);
 
 CREATE TABLE genres (
 	gameID int(8),
-	multiplayer bool NOT NULL,
-	single_player bool NOT NULL,
-	moba bool NOT NULL,
-	shooter bool NOT NULL,
-	rpg bool NOT NULL,
-	visual_novel bool NOT NULL,
-	platformer bool NOT NULL,
-	strategy bool NOT NULL,
-	puzzle bool NOT NULL,
+	multiplayer bool NOT NULL DEFAULT 0,
+	singleplayer bool NOT NULL DEFAULT 0,
+	moba bool NOT NULL DEFAULT 0,
+	shooter bool NOT NULL DEFAULT 0,
+	rpg bool NOT NULL DEFAULT 0,
+	visual_novel bool NOT NULL DEFAULT 0,
+	platformer bool NOT NULL DEFAULT 0,
+	strategy bool NOT NULL DEFAULT 0,
+	puzzle bool NOT NULL DEFAULT 0,
 	PRIMARY KEY(gameID),
 	FOREIGN KEY (gameID) REFERENCES games(gameID)
 	);
