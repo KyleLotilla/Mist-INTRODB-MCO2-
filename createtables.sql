@@ -5,7 +5,7 @@ CREATE TABLE accounts (
 	accountID int(8) AUTO_INCREMENT,
 	username varchar(32) NOT NULL UNIQUE,
 	password varchar(32) NOT NULL,
-	email_address varchar(255) NOT NULL UNIQUE,
+	email varchar(255) NOT NULL UNIQUE,
 	account_type ENUM('Player', 'Developer') NOT NULL,
 	description varchar(255),
 	PRIMARY KEY (accountID)
@@ -17,26 +17,26 @@ CREATE TABLE games (
 	devID int(8) NOT NULL,
 	price decimal(10,2) NOT NULL,
 	date_published date NOT NULL,
-	likes int(10) DEFAULT 0,
-	dislikes int(10) DEFAULT 0,
 	description varchar(255),
 	image varchar(255) NOT NULL,
 	PRIMARY KEY (gameID),
 	FOREIGN KEY (devID) REFERENCES accounts(accountID)
 	);
 
-CREATE TABLE genres (
+CREATE TABLE rating (
+	accountID int(8),
 	gameID int(8),
-	multiplayer bool NOT NULL DEFAULT 0,
-	singleplayer bool NOT NULL DEFAULT 0,
-	moba bool NOT NULL DEFAULT 0,
-	shooter bool NOT NULL DEFAULT 0,
-	rpg bool NOT NULL DEFAULT 0,
-	visual_novel bool NOT NULL DEFAULT 0,
-	platformer bool NOT NULL DEFAULT 0,
-	strategy bool NOT NULL DEFAULT 0,
-	puzzle bool NOT NULL DEFAULT 0,
-	PRIMARY KEY(gameID),
+	liked bool NOT NULL DEFAULT 0,
+	disliked bool NOT NULL DEFAULT 0,
+	PRIMARY KEY (accountID, gameID),
+	FOREIGN KEY (accountID) REFERENCES accounts(accountID),
+	FOREIGN KEY (gameID) REFERENCES games(gameID)
+	);
+	
+CREATE TABLE genres (
+	gameID int(8) NOT UNIQUE,
+	genre varchar(32) NOT NULL,
+	PRIMARY KEY(gameID, genre),
 	FOREIGN KEY (gameID) REFERENCES games(gameID)
 	);
 
@@ -47,9 +47,15 @@ CREATE TABLE transaction (
 	game_bought int(8) NOT NULL,
 	amount_paid decimal(10, 2) NOT NULL,
 	credit_number char(19) NOT NULL,
-	csv int(3) NOT NULL,
-	expiration date NOT NULL,
 	PRIMARY KEY (transID),
 	FOREIGN KEY (playerID) REFERENCES accounts(accountID),
-	FOREIGN KEY (game_bought) REFERENCES games(gameID)
+	FOREIGN KEY (game_bought) REFERENCES games(gameID),
+	FOREIGN KEY (credit_number) REFERENCES valid_credit_card
+	);
+
+CREATE TABLE valid_credit_card (
+	credit_number char(19) NOT NULL,
+	csv int(3) NOT NULL,
+	expiration date NOT NULL,
+	PRIMARY KEY (credit_number)
 	);
