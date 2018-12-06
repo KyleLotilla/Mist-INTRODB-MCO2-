@@ -25,7 +25,7 @@ try {
      throw new \PDOException($e->getMessage(), (int)$e->getCode());
 }
 
-$userQuery = $pdo->prepare("SELECT username, password, email_address, account_type, description FROM accounts WHERE accountID = ?");
+$userQuery = $pdo->prepare("SELECT username, password, email, account_type, description FROM accounts WHERE accountID = ?");
 $userQuery->execute([$_SESSION["accountID"]]);
 $user = $userQuery->fetch();
 
@@ -33,7 +33,7 @@ echo "<h1>". $user['username'] . "</h1><br>";
 echo "<h2>". $user['account_type'] . "<br>";
 if ($user['account_type'] == "Player")	
 	echo "Password: ". $user['password'] . "<br>";
-echo "Email Address: ". $user['email_address'] . "<br><br>";
+echo "Email Address: ". $user['email'] . "<br><br>";
 if ($user['account_type'] == "Developer")
 	if ($user['description'] != null)
 		echo $user['description']. "<a href=\"des_editor.php\">Edit Description</a>";

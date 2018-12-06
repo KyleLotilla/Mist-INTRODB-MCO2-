@@ -3,7 +3,7 @@ session_start();
 
 include 'sqlcon.php';
 
-$email_check = $pdo->prepare("SELECT accountID, username, password FROM accounts WHERE email_address = ?");
+$email_check = $pdo->prepare("SELECT accountID, username, password FROM accounts WHERE email = ?");
 $email_check->execute([$_POST["email"]]);
 $user = $email_check->fetch();
 

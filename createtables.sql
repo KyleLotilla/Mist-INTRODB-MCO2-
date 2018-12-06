@@ -34,10 +34,17 @@ CREATE TABLE rating (
 	);
 	
 CREATE TABLE genres (
-	gameID int(8) NOT UNIQUE,
+	gameID int(8),
 	genre varchar(32) NOT NULL,
 	PRIMARY KEY(gameID, genre),
 	FOREIGN KEY (gameID) REFERENCES games(gameID)
+	);
+    
+CREATE TABLE valid_credit_card (
+	credit_number char(19) NOT NULL,
+	csv int(3) NOT NULL,
+	expiration date NOT NULL,
+	PRIMARY KEY (credit_number)
 	);
 
 CREATE TABLE transaction (
@@ -50,12 +57,5 @@ CREATE TABLE transaction (
 	PRIMARY KEY (transID),
 	FOREIGN KEY (playerID) REFERENCES accounts(accountID),
 	FOREIGN KEY (game_bought) REFERENCES games(gameID),
-	FOREIGN KEY (credit_number) REFERENCES valid_credit_card
-	);
-
-CREATE TABLE valid_credit_card (
-	credit_number char(19) NOT NULL,
-	csv int(3) NOT NULL,
-	expiration date NOT NULL,
-	PRIMARY KEY (credit_number)
+	FOREIGN KEY (credit_number) REFERENCES valid_credit_card(credit_number)
 	);
