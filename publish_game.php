@@ -12,15 +12,15 @@ Description: <input type = "text" name = "description"> <br>
 Price: <input type = "radio" name = "price" value = "free" checked> Free
 <input type = "radio" name = "price" value = "paid"> Set Price <input type = "text" name = "price_set"> <br>
 Genres: <br>
-<input type = "checkbox" name = "genre[]" value = "multiplayer"> Multiplayer 
-<input type = "checkbox" name = "genre[]" value = "singleplayer"> Single Player 
-<input type = "checkbox" name = "genre[]" value = "moba"> MOBA <br>
-<input type = "checkbox" name = "genre[]" value = "shooter"> Shooter 
-<input type = "checkbox" name = "genre[]" value = "rpg"> RPG 
-<input type = "checkbox" name = "genre[]" value = "visual novel"> Visual Novel <br>
-<input type = "checkbox" name = "genre[]" value = "platformer"> Platformer 
-<input type = "checkbox" name = "genre[]" value = "strategy"> Strategy 
-<input type = "checkbox" name = "genre[]" value = "puzzle"> Puzzle <br>
+<input type = "checkbox" name = "genre[]" value = "Multiplayer"> Multiplayer 
+<input type = "checkbox" name = "genre[]" value = "Singleplayer"> Single Player 
+<input type = "checkbox" name = "genre[]" value = "MOBA"> MOBA <br>
+<input type = "checkbox" name = "genre[]" value = "Shooter"> Shooter 
+<input type = "checkbox" name = "genre[]" value = "RPG"> RPG 
+<input type = "checkbox" name = "genre[]" value = "Visual Novel"> Visual Novel <br>
+<input type = "checkbox" name = "genre[]" value = "Platformer"> Platformer 
+<input type = "checkbox" name = "genre[]" value = "Strategy"> Strategy 
+<input type = "checkbox" name = "genre[]" value = "Puzzle"> Puzzle <br>
 Image: <input type = "file" name = "img"> <br>
 <input type = "submit" value = "Submit">
 

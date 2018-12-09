@@ -44,6 +44,7 @@ CREATE TABLE valid_credit_card (
 	credit_number char(19) NOT NULL,
 	csv int(3) NOT NULL,
 	expiration date NOT NULL,
+	payment_method varchar(32) NOT NULL,
 	PRIMARY KEY (credit_number)
 	);
 
@@ -53,6 +54,7 @@ CREATE TABLE transaction (
 	playerID int(8) NOT NULL,
 	game_bought int(8) NOT NULL,
 	amount_paid decimal(10, 2) NOT NULL,
+	payment_method varchar(32) NOT NULL,
 	credit_number char(19) NOT NULL,
 	PRIMARY KEY (transID),
 	FOREIGN KEY (playerID) REFERENCES accounts(accountID),

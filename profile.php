@@ -7,23 +7,7 @@ session_start();
 <body>
 
 <?php
-$host = '127.0.0.1';
-$db = 'mistdb';
-$user = 'root';
-$pass = '';
-$charset = 'utf8mb4';
-
-$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-$options = [
-    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    PDO::ATTR_EMULATE_PREPARES   => false,
-];
-try {
-     $pdo = new PDO($dsn, $user, $pass, $options);
-} catch (\PDOException $e) {
-     throw new \PDOException($e->getMessage(), (int)$e->getCode());
-}
+include 'sqlcon.php';
 
 $userQuery = $pdo->prepare("SELECT username, password, email, account_type, description FROM accounts WHERE accountID = ?");
 $userQuery->execute([$_SESSION["accountID"]]);
@@ -34,7 +18,7 @@ echo "<h2>". $user['account_type'] . "<br>";
 if ($user['account_type'] == "Player")	
 	echo "Password: ". $user['password'] . "<br>";
 echo "Email Address: ". $user['email'] . "<br><br>";
-if ($user['account_type'] == "Developer")
+if ($_SESSION['account_type'] == "Developer")
 	if ($user['description'] != null)
 		echo $user['description']. "<a href=\"des_editor.php\">Edit Description</a>";
 	else
