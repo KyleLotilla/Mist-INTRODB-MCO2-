@@ -5,7 +5,7 @@ CREATE TABLE accounts (
 	accountID int(8) AUTO_INCREMENT,
 	username varchar(32) NOT NULL UNIQUE,
 	password varchar(32) NOT NULL,
-	email varchar(255) NOT NULL UNIQUE,
+	email varchar(255) NOT NULL,
 	account_type ENUM('Player', 'Developer') NOT NULL,
 	description varchar(255),
 	PRIMARY KEY (accountID)
@@ -26,8 +26,7 @@ CREATE TABLE games (
 CREATE TABLE rating (
 	accountID int(8),
 	gameID int(8),
-	liked bool NOT NULL DEFAULT 0,
-	disliked bool NOT NULL DEFAULT 0,
+	liked bool NOT NULL,
 	PRIMARY KEY (accountID, gameID),
 	FOREIGN KEY (accountID) REFERENCES accounts(accountID),
 	FOREIGN KEY (gameID) REFERENCES games(gameID)
@@ -55,7 +54,7 @@ CREATE TABLE transaction (
 	game_bought int(8) NOT NULL,
 	amount_paid decimal(10, 2) NOT NULL,
 	payment_method varchar(32) NOT NULL,
-	credit_number char(19) NOT NULL,
+	credit_number char(19),
 	PRIMARY KEY (transID),
 	FOREIGN KEY (playerID) REFERENCES accounts(accountID),
 	FOREIGN KEY (game_bought) REFERENCES games(gameID),

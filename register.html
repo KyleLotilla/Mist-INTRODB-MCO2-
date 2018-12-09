@@ -4,12 +4,13 @@
 <body>
 
 <form action = "account_created.php" method = "post">
-Username: <input type = "text" name = "username"> <br>
-Password: <input type = "text" name = "password"> <br>
-Email Address: <input type = "text" name = "email"> <br>
+Username (3 to 32 characters): <input type = "text" name = "username" maxlength = "32"> <br>
+Password (3 to 32 characters; Must contain one number and one uppercase and lowercase letter): <input type = "password" name = "password" maxlength = "32"> <br>
+Confirm Password: <input type = "password" name = "confirm_password" maxlength = "32"> <br>
+Email Address (For developers, make it is a Paypal email where payouts could be made): <input type = "text" name = "email"> <br>
 Player Type: <br>
-<input type = "radio" name = "account_type" value  = "player" checked> Player <br>
-<input type = "radio" name = "account_type" value  = "developer"> Developer <br>
+<input type = "radio" name = "account_type" value  = "Player" checked> Player <br>
+<input type = "radio" name = "account_type" value  = "Developer"> Developer <br>
 <input type = "submit" value = "Submit">
 </form>
 

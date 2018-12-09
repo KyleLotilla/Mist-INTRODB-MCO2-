@@ -5,7 +5,8 @@ session_start();
 <head>
 </head>
 <body>
-
+<?php include 'top_menu.php'; ?>
+<br>
 <form action = "published.php" method = "post" enctype="multipart/form-data">
 Title: <input type = "text" name = "title"> <br>
 Description: <input type = "text" name = "description"> <br>

@@ -1,6 +1,5 @@
 <?php
 session_start();
-$_SESSION['accountID'] = 1;
 
 if (!isset($_GET['id']) || !isset($_POST['payment_method']) || 
 	!isset($_POST['credit_number']) || !isset($_POST['csv']) || 
@@ -37,26 +36,23 @@ else {
 		if ($validationQuery->rowCount() == 0)
 			echo "Invalid credit card details<br><a href = \"buy_game.php?id=". $_GET['id']. "\"> Go Back </a>";
 		else {
+			include 'top_menu.php';
 			$gameQuery = $pdo->prepare("SELECT title, price
 										FROM games
 										WHERE gameID = ?");
 			$gameQuery->execute([$_GET['id']]);
 			$game = $gameQuery->fetch();
 			
-			var_dump($_SESSION['accountID']);
-			var_dump((int)$_GET['id']);
-			var_dump((double)$game['price']);
-			var_dump($_POST['payment_method']);
-			var_dump($credit_number);
-			
 			$transQuery = $pdo->prepare("INSERT INTO transaction (date_purchased, playerID, game_bought, amount_paid, payment_method, credit_number)
 										 VALUES (CURDATE(), ?, ?, ?, ?, ?)");
 			$transQuery->execute([$_SESSION['accountID'], $_GET['id'], $game['price'], $_POST['payment_method'], $credit_number]);
-			$trans = $transQuery->fetch();
+			$idQuery = $pdo->prepare("SELECT LAST_INSERT_ID() AS id");
+			$idQuery->execute();
+			$trans = $idQuery->fetch();
 			echo "Purchase Successful!<br>Receipt:<br><br>";
-			//echo "Transaction ID: ". $trans['curTransID'] ."<br>";
+			echo "Transaction ID: ". $trans['id'] ."<br>";
 			echo "Game Bought: ". $game['title'] ."<br>";
-			echo "Amount Paid: ". $game['price'] ."<br>";
+			echo "Amount Paid: $". $game['price'] ."<br>";
 		}
 	}
 }

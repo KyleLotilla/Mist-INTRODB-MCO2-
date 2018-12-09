@@ -17,6 +17,7 @@ session_start();
 
 <?php
 include 'sqlcon.php';
+include 'top_menu.php';
 
 if (!isset($_GET['sort']))
 	$_GET['sort'] = "title";

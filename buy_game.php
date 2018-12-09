@@ -12,6 +12,7 @@ if (!isset($_GET['id']))
 	echo "Select a game to buy.<br><a href =\"view_games_list.php\">View Game List </a>";
 else {
 	include 'sqlcon.php';
+	include 'top_menu.php';
 	$gameQuery = $pdo->prepare("SELECT title, price FROM games WHERE gameID = ?");
 	$gameQuery->execute([$_GET['id']]);
 	$game = $gameQuery->fetch();
@@ -33,3 +34,5 @@ else {
 	echo "<input type = \"submit\" value = \"Submit\"> </form>";
 }
 ?>
+</body>
+</html>

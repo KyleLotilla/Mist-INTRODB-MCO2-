@@ -15,11 +15,11 @@ if (ctype_space($_SESSION['dev']) || $_SESSION['dev'] == '')
 	$_SESSION['dev'] = null;
 
 if (!isset($_SESSION['title']) && !isset($_SESSION['dev']) && !isset($_SESSION['genre']))
-	echo "No search parameter was entered. Please enter any search parameter.\n <a href = \"viewGame.php\"> Go Back </a>";
+	echo "No search parameter was entered. Please enter any search parameter.\n <a href = \"view_games_list.php\"> Go Back </a>";
 else if ((strlen($_SESSION['title']) < 3 || strlen($_SESSION['title']) > 32) && isset($_SESSION['title']))
-	echo "The Title should between 3 and 32 characters. \n <a href = \"viewGame.php\"> Go Back </a>";
+	echo "The Title should between 3 and 32 characters. \n <a href = \"view_games_list.php\"> Go Back </a>";
 else if ((strlen($_SESSION['dev']) < 3 || strlen($_SESSION['dev']) > 32) && isset($_SESSION['dev']))
-	echo "The Developer should between 3 and 32 characters. \n <a href = \"viewGame.php\"> Go Back </a>"; 
+	echo "The Developer should between 3 and 32 characters. \n <a href = \"view_games_list.php\"> Go Back </a>"; 
 else {
 	include 'sqlcon.php';
 	if (!isset($_GET['sort']))
@@ -93,6 +93,7 @@ else {
 		echo "<b> Title </b> | <a href = \"search.php?sort=overall_rating&order=DESC\"> Rating </a> <br>";
 	else if ($_GET['sort'] == "overall_rating")
 		echo "<a href = \"search.php?sort=title&order=ASC\"> Title </a> | <b> Rating </b> <br>";
+	echo "<a href = \"view_games_list.php\"> Go Back </a>"; 
 }
 	
 ?>
