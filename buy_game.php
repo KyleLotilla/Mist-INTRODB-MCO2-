@@ -18,11 +18,11 @@ else {
 	$game = $gameQuery->fetch();
 	
 	echo "<b> Buying: ". $game['title'] . "</b><br>";
-	echo "Total Amount: $". $game['price'] . "<br>";
+	echo "Total Amount: Php ". $game['price'] . "<br>";
 	echo "<form action = \"receipt.php?id=". $_GET['id'] ."\" method = \"post\">";
 	echo "Payment Method: <br>";
 	echo "<input type = \"radio\" name = \"payment_method\" value = \"Visa\" checked> Visa";
-	echo "<input type = \"radio\" name = \"payment_method\" value = \"Mastercard\"> Mastercard <br>";
+	echo "<input type = \"radio\" name = \"payment_method\" value = \"Master Card\"> Master Card <br>";
 	echo "Credit Credit Number: <br>"; 
 	echo "<input type = \"text\" name = \"credit_number[]\" maxlength = \"4\" size = \"4\"> - ";
 	echo "<input type = \"text\" name = \"credit_number[]\" maxlength = \"4\" size = \"4\"> - ";

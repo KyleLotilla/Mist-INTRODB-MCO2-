@@ -18,7 +18,8 @@ else {
 			 (!ctype_digit($_POST['expiration_year']) || strlen($_POST['expiration_year']) != 2) ||
 			 (intval($_POST['expiration_month']) < 1 || intval($_POST['expiration_month']) > 12)) 
 		echo "Please expiration date in correct format<br><a href = \"buy_game.php?id=". $_GET['id']. "\"> Go Back </a>";
-	else if (intval($_POST['expiration_month']) < intval(date("m")) || 
+	else if ((intval($_POST['expiration_month']) < intval(date("m")) &&
+			 intval($_POST['expiration_year']) == intval(date("y"))) || 
 			 intval($_POST['expiration_year']) < intval(date("y")))
 		echo "Credit card has expired<br><a href = \"buy_game.php?id=". $_GET['id']. "\"> Go Back </a>";
 	else {
@@ -52,7 +53,7 @@ else {
 			echo "Purchase Successful!<br>Receipt:<br><br>";
 			echo "Transaction ID: ". $trans['id'] ."<br>";
 			echo "Game Bought: ". $game['title'] ."<br>";
-			echo "Amount Paid: $". $game['price'] ."<br>";
+			echo "Amount Paid: Php ". $game['price'] ."<br>";
 		}
 	}
 }

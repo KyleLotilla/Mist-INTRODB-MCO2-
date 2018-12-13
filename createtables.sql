@@ -7,7 +7,6 @@ CREATE TABLE accounts (
 	password varchar(32) NOT NULL,
 	email varchar(255) NOT NULL,
 	account_type ENUM('Player', 'Developer') NOT NULL,
-	description varchar(255),
 	PRIMARY KEY (accountID)
 	);
 	

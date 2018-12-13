@@ -10,7 +10,7 @@ session_start();
 include 'top_menu.php';
 include 'sqlcon.php';
 
-$userQuery = $pdo->prepare("SELECT username, LENGTH(password) AS pass_len, email, description FROM accounts WHERE accountID = ?");
+$userQuery = $pdo->prepare("SELECT username, LENGTH(password) AS pass_len, email FROM accounts WHERE accountID = ?");
 $userQuery->execute([$_SESSION["accountID"]]);
 $user = $userQuery->fetch();
 

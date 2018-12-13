@@ -73,7 +73,7 @@ else {
 			}
 		}
 		else {
-			echo "$". $game['price'] ."<br>";
+			echo "Php ". $game['price'] ."<br>";
 			if ($_SESSION['account_type'] == "Player") {
 				$transQuery = $pdo->prepare("SELECT transID
 											 FROM transaction

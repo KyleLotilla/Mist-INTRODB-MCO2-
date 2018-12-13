@@ -11,7 +11,7 @@ session_start();
 Title: <input type = "text" name = "title"> <br>
 Description: <input type = "text" name = "description"> <br>
 Price: <input type = "radio" name = "price" value = "free" checked> Free
-<input type = "radio" name = "price" value = "paid"> Set Price <input type = "text" name = "price_set"> <br>
+<input type = "radio" name = "price" value = "paid"> Set Price: Php <input type = "text" name = "price_set"> <br>
 Genres: <br>
 <input type = "checkbox" name = "genre[]" value = "Multiplayer"> Multiplayer 
 <input type = "checkbox" name = "genre[]" value = "Singleplayer"> Single Player 

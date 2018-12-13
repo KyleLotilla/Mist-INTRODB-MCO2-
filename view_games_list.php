@@ -55,16 +55,18 @@ foreach($games as $g) {
 	if ($g['price'] == 0)
 		echo "Free</td>";
 	else
-		echo "$". $g['price'] ."</td>";
+		echo "Php ". $g['price'] ."</td>";
 	echo "</tr>";
 }
 
 echo "</table>" .$gameQuery->rowCount(). " games Returned &#8195 Sort By: ";
 
 if ($_GET['sort'] == "title")
-	echo "<b> Title </b> | <a href = \"view_games_list.php?sort=overall_rating&order=DESC\"> Rating </a> <br>";
+	echo "<b> Title </b> | <a href = \"view_games_list.php?sort=overall_rating&order=DESC\"> Rating </a> | <a href = \"view_games_list.php?sort=price&order=ASC\"> Price </a> <br>";
 else if ($_GET['sort'] == "overall_rating")
-	echo "<a href = \"view_games_list.php?sort=title&order=ASC\"> Title </a> | <b> Rating </b> <br>";
+	echo "<a href = \"view_games_list.php?sort=title&order=ASC\"> Title </a> | <b> Rating </b> | <a href = \"view_games_list.php?sort=price&order=ASC\"> Price </a> <br>";
+else if ($_GET['sort'] == "price")
+	echo "<a href = \"view_games_list.php?sort=title&order=ASC\"> Title </a> | <a href = \"view_games_list.php?sort=overall_rating&order=DESC\"> Rating </a> | <b> Price </b> <br>";
 ?>
 
 <form action = "search.php" method = "post">

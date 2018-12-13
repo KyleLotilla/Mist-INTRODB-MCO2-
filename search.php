@@ -22,6 +22,7 @@ else if ((strlen($_SESSION['dev']) < 3 || strlen($_SESSION['dev']) > 32) && isse
 	echo "The Developer should between 3 and 32 characters. \n <a href = \"view_games_list.php\"> Go Back </a>"; 
 else {
 	include 'sqlcon.php';
+	include 'top_menu.php';
 	if (!isset($_GET['sort']))
 		$_GET['sort'] = "title";
 	if (!isset($_GET['order']))
@@ -83,16 +84,18 @@ else {
 		if ($r['price'] == 0)
 			echo "Free</td>";
 		else
-			echo "$". $r['price'] ."</td>";
+			echo "Php ". $r['price'] ."</td>";
 		echo "</tr>";
 	}
 
 	echo "</table>" .$searchQuery->rowCount(). " games Returned &#8195 Sort By: ";
 
 	if ($_GET['sort'] == "title")
-		echo "<b> Title </b> | <a href = \"search.php?sort=overall_rating&order=DESC\"> Rating </a> <br>";
+		echo "<b> Title </b> | <a href = \"search.php?sort=overall_rating&order=DESC\"> Rating </a> | <a href = \"search.php?sort=price&order=ASC\"> Price </a> <br>";
 	else if ($_GET['sort'] == "overall_rating")
-		echo "<a href = \"search.php?sort=title&order=ASC\"> Title </a> | <b> Rating </b> <br>";
+		echo "<a href = \"search.php?sort=title&order=ASC\"> Title </a> | <b> Rating </b> | <a href = \"search.php?sort=price&order=ASC\"> Price </a> <br>";
+	else if ($_GET['sort'] == "price")
+		echo "<a href = \"search.php?sort=title&order=ASC\"> Title </a> | <a href = \"search.php?sort=overall_rating&order=DESC\"> Rating </a> | <b> Price </b> <br>";
 	echo "<a href = \"view_games_list.php\"> Go Back </a>"; 
 }
 	
