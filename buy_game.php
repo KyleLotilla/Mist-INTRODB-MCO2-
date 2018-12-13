@@ -23,7 +23,7 @@ else {
 	echo "Payment Method: <br>";
 	echo "<input type = \"radio\" name = \"payment_method\" value = \"Visa\" checked> Visa";
 	echo "<input type = \"radio\" name = \"payment_method\" value = \"Master Card\"> Master Card <br>";
-	echo "Credit Credit Number: <br>"; 
+	echo "Credit Card Number: <br>"; 
 	echo "<input type = \"text\" name = \"credit_number[]\" maxlength = \"4\" size = \"4\"> - ";
 	echo "<input type = \"text\" name = \"credit_number[]\" maxlength = \"4\" size = \"4\"> - ";
 	echo "<input type = \"text\" name = \"credit_number[]\" maxlength = \"4\" size = \"4\"> - ";

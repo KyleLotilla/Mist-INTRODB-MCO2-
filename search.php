@@ -59,7 +59,7 @@ else {
 	if (isset($_SESSION['dev'])) {
 		if ($addedParameterFlag)
 			$intialQuery = $intialQuery ."AND ";
-		$initialQuery = $intialQuery ."title LIKE \"%". $_SESSION['dev']. "%\"";
+		$initialQuery = $intialQuery ."dev LIKE \"%". $_SESSION['dev']. "%\"";
 		$addedParameterFlag = 1;
 	}
 	if (isset($_SESSION['genre'])) {

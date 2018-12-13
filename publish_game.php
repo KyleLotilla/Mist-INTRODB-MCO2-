@@ -8,7 +8,7 @@ session_start();
 <?php include 'top_menu.php'; ?>
 <br>
 <form action = "published.php" method = "post" enctype="multipart/form-data">
-Title: <input type = "text" name = "title"> <br>
+Title: <input type = "text" name = "title" maxlength = "32"> <br>
 Description: <input type = "text" name = "description"> <br>
 Price: <input type = "radio" name = "price" value = "free" checked> Free
 <input type = "radio" name = "price" value = "paid"> Set Price: Php <input type = "text" name = "price_set"> <br>
